@@ -7,508 +7,856 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #E8A020;
-    --gold-light: #F5C842;
-    --dark: #1C1C1E;
-    --dark2: #2A2A2C;
-    --dark3: #333335;
-    --dark4: #3E3E40;
-    --cream: #F0EAD6;
-    --cream2: #D8CFB0;
-    --red: #C0392B;
-    --green: #2E7D4F;
-    --blue: #1A5276;
-    --purple: #5B2D8E;
-    --orange: #C0550A;
-    --teal: #0D6E6E;
-    --pink: #8E2D5B;
-    --pizza: #C0390A;
-    --punctual: #1A6B3A;
-    --sleepy: #2D4E8E;
+    --gold:#E8A020;--dark:#3A3A3C;--dark2:#4A4A4C;--dark3:#565658;
+    --cream:#F0EAD6;--cream2:#D8CFB0;--green:#2E7D4F;--orange:#C0550A;
+    --pizza:#1A4E8E;--punctual:#C0390A;--sleepy:#555558;
+    --cpizza:#7aaae8;--cpunctual:#f0906a;--csleepy:#aaaaac;
+    --border:#6A6A6C;--border2:#565658;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { background: var(--dark); color: var(--cream); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--dark);color:var(--cream);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;}
 
-  .hero { background: var(--dark2); border-bottom: 1px solid #444446; padding: 60px 24px 48px; text-align: center; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(232,160,32,0.12) 0%, transparent 70%); pointer-events: none; }
-  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
-  .hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 12vw, 120px); letter-spacing: 0.04em; line-height: 0.9; color: var(--cream); margin-bottom: 8px; }
-  .hero h1 span { color: var(--gold); }
-  .hero-sub { font-size: 14px; color: var(--cream2); margin-top: 16px; font-weight: 300; letter-spacing: 0.04em; }
-  .hero-badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
-  .badge { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; padding: 5px 12px; border: 1px solid rgba(232,160,32,0.3); border-radius: 2px; color: var(--gold); background: rgba(232,160,32,0.06); }
+  .hero{background:var(--dark2);border-bottom:1px solid var(--border);padding:50px 24px 40px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(232,160,32,0.12) 0%,transparent 70%);pointer-events:none;}
+  .hero-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+  .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,10vw,110px);letter-spacing:0.04em;line-height:0.9;color:var(--cream);}
+  .hero h1 span{color:var(--gold);}
+  .hero-sub{font-size:13px;color:var(--cream2);margin-top:14px;font-weight:300;letter-spacing:0.04em;}
+  .hero-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+  .badge{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;padding:4px 11px;border:1px solid rgba(232,160,32,0.3);border-radius:2px;color:var(--gold);background:rgba(232,160,32,0.06);}
 
-  .nav { background: var(--dark2); border-bottom: 1px solid #444446; position: sticky; top: 0; z-index: 100; display: flex; overflow-x: auto; scrollbar-width: none; }
-  .nav::-webkit-scrollbar { display: none; }
-  .nav-btn { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 16px 20px; background: none; border: none; color: var(--cream2); cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; opacity: 0.6; }
-  .nav-btn:hover { opacity: 1; color: var(--cream); }
-  .nav-btn.active { color: var(--gold); border-bottom-color: var(--gold); opacity: 1; }
+  .nav{background:var(--dark2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;display:flex;overflow-x:auto;scrollbar-width:none;}
+  .nav::-webkit-scrollbar{display:none;}
+  .nav-btn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:15px 18px;background:none;border:none;color:var(--cream2);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;opacity:0.6;}
+  .nav-btn:hover{opacity:1;color:var(--cream);}
+  .nav-btn.active{color:var(--gold);border-bottom-color:var(--gold);opacity:1;}
 
-  .main { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
-  .section { display: none; }
-  .section.active { display: block; }
+  .main{max-width:960px;margin:0 auto;padding:36px 16px 80px;}
+  .section{display:none;}.section.active{display:block;}
+  .section-header{margin-bottom:24px;}
+  .section-header h2{font-family:'Bebas Neue',sans-serif;font-size:44px;letter-spacing:0.04em;color:var(--cream);line-height:1;}
+  .section-header h2 span{color:var(--gold);}
+  .section-header p{font-size:13px;color:var(--cream2);margin-top:6px;font-weight:300;line-height:1.6;}
 
-  .section-header { margin-bottom: 32px; }
-  .section-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.04em; color: var(--cream); line-height: 1; }
-  .section-header h2 span { color: var(--gold); }
-  .section-header p { font-size: 13px; color: var(--cream2); margin-top: 8px; font-weight: 300; line-height: 1.6; }
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-bottom:24px;}
+  .stat-box{background:var(--dark3);border:1px solid var(--border);padding:14px;text-align:center;}
+  .stat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);line-height:1;}
+  .stat-lbl{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:0.1em;color:var(--cream2);margin-top:3px;text-transform:uppercase;}
 
-  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 32px; }
-  .stat-box { background: var(--dark3); border: 1px solid #444446; padding: 16px; text-align: center; }
-  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--gold); line-height: 1; }
-  .stat-lbl { font-size: 10px; font-family: 'DM Mono', monospace; letter-spacing: 0.1em; color: var(--cream2); margin-top: 4px; text-transform: uppercase; }
+  /* RULES */
+  .game-selector{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
+  .game-pill{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 12px;background:var(--dark3);border:1px solid var(--border);color:var(--cream2);cursor:pointer;border-radius:2px;transition:all 0.15s;}
+  .game-pill:hover{border-color:var(--gold);color:var(--cream);}
+  .game-pill.active{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:600;}
+  .rule-card{background:var(--dark2);border:1px solid var(--border);border-top:3px solid var(--gold);padding:22px 26px;display:none;}
+  .rule-card.active{display:block;}
+  .rule-card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px;}
+  .rule-card-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:0.04em;color:var(--cream);line-height:1;}
+  .rule-format{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);background:rgba(232,160,32,0.1);border:1px solid rgba(232,160,32,0.25);padding:4px 10px;border-radius:2px;white-space:nowrap;}
+  .suggested-tag{font-family:'DM Mono',monospace;font-size:9px;color:var(--orange);background:rgba(192,85,10,0.12);border:1px solid rgba(192,85,10,0.3);padding:3px 8px;border-radius:2px;margin-left:8px;}
+  .win-condition{background:rgba(46,125,79,0.15);border:1px solid rgba(46,125,79,0.3);border-left:3px solid var(--green);padding:9px 14px;margin-bottom:18px;font-size:13px;color:#7ecf9a;}
+  .win-condition strong{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:3px;}
+  .rules-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream2);margin-bottom:10px;opacity:0.6;}
+  .rule-item{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--border2);font-size:13px;line-height:1.6;color:var(--cream2);}
+  .rule-item:last-child{border-bottom:none;}
+  .rule-num{font-family:'DM Mono',monospace;font-size:10px;color:var(--gold);opacity:0.6;flex-shrink:0;margin-top:3px;min-width:20px;}
 
-  .game-selector { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
-  .game-pill { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; background: var(--dark3); border: 1px solid #444446; color: var(--cream2); cursor: pointer; border-radius: 2px; transition: all 0.15s; }
-  .game-pill:hover { border-color: var(--gold); color: var(--cream); }
-  .game-pill.active { background: var(--gold); color: var(--dark); border-color: var(--gold); font-weight: 600; }
+  /* SCOREBOARD TOP */
+  .team-score-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:24px;}
+  .team-score-card{border:none;padding:24px 14px;text-align:center;position:relative;border-radius:4px;}
+  .team-score-card.pizza{background:rgba(26,78,142,0.35);border:2px solid rgba(26,78,142,0.7);}
+  .team-score-card.punctual{background:rgba(192,57,10,0.35);border:2px solid rgba(192,57,10,0.7);}
+  .team-score-card.sleepy{background:rgba(85,85,88,0.35);border:2px solid rgba(85,85,88,0.7);}
+  .team-score-card.leading.pizza{background:rgba(26,78,142,0.55);border:2px solid var(--cpizza);box-shadow:0 0 16px rgba(26,78,142,0.4);}
+  .team-score-card.leading.punctual{background:rgba(192,57,10,0.55);border:2px solid var(--cpunctual);box-shadow:0 0 16px rgba(192,57,10,0.4);}
+  .team-score-card.leading.sleepy{background:rgba(85,85,88,0.55);border:2px solid var(--csleepy);box-shadow:0 0 16px rgba(85,85,88,0.4);}
+  .team-score-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.04em;margin-bottom:4px;color:#fff;}
+  .team-score-pts{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:1;color:#fff;}
+  .team-score-sub{font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);margin-top:3px;letter-spacing:0.06em;}
+  .leader-crown{font-size:16px;position:absolute;top:8px;right:10px;}
 
-  .rule-card { background: var(--dark2); border: 1px solid #444446; border-top: 3px solid var(--gold); padding: 24px 28px; display: none; }
-  .rule-card.active { display: block; }
-  .rule-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
-  .rule-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.04em; color: var(--cream); line-height: 1; }
-  .rule-format { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--gold); background: rgba(232,160,32,0.1); border: 1px solid rgba(232,160,32,0.25); padding: 4px 10px; border-radius: 2px; white-space: nowrap; }
-  .suggested-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.08em; color: var(--orange); background: rgba(192,85,10,0.12); border: 1px solid rgba(192,85,10,0.3); padding: 3px 8px; border-radius: 2px; margin-left: 8px; }
-  .win-condition { background: rgba(46,125,79,0.15); border: 1px solid rgba(46,125,79,0.3); border-left: 3px solid var(--green); padding: 10px 16px; margin-bottom: 20px; font-size: 13px; color: #7ecf9a; }
-  .win-condition strong { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); display: block; margin-bottom: 4px; }
-  .rules-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream2); margin-bottom: 12px; opacity: 0.6; }
-  .rule-item { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid #3a3a3c; font-size: 13px; line-height: 1.6; color: var(--cream2); }
-  .rule-item:last-child { border-bottom: none; }
-  .rule-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); opacity: 0.6; flex-shrink: 0; margin-top: 3px; min-width: 20px; }
+  /* GAME NAV */
+  .game-nav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+  .game-nav-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.06em;text-transform:uppercase;padding:6px 12px;background:var(--dark3);border:1px solid var(--border);color:var(--cream2);cursor:pointer;border-radius:2px;transition:all 0.15s;position:relative;}
+  .game-nav-btn:hover{border-color:var(--gold);color:var(--cream);}
+  .game-nav-btn.active{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:600;}
+  .prog-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--green);margin-left:5px;vertical-align:middle;opacity:0;}
+  .game-nav-btn.has-results .prog-dot{opacity:1;}
+  .game-nav-btn.completed .prog-dot{background:var(--gold);}
 
-  .matrix-controls { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
-  .matrix-table-wrap { overflow-x: auto; }
-  .matrix-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 500px; }
-  .matrix-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream2); padding: 10px 12px; border-bottom: 1px solid #444446; text-align: left; background: var(--dark3); opacity: 0.7; }
-  .matrix-table td { padding: 10px 12px; border-bottom: 1px solid #3a3a3c; color: var(--cream2); vertical-align: middle; }
-  .matrix-table tr:last-child td { border-bottom: none; }
-  .matrix-table tr:hover td { background: rgba(255,255,255,0.02); }
-  .rd-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); opacity: 0.7; }
-  .player-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 2px; margin: 1px; }
-  .tag-pizza { background: rgba(192,57,10,0.25); color: #f0906a; border: 1px solid rgba(192,57,10,0.4); }
-  .tag-punctual { background: rgba(26,107,58,0.25); color: #6ecf96; border: 1px solid rgba(26,107,58,0.4); }
-  .tag-sleepy { background: rgba(45,78,142,0.25); color: #7aaae8; border: 1px solid rgba(45,78,142,0.4); }
-  .vs-sep { color: #555558; font-size: 10px; margin: 0 2px; }
+  /* GAME PANELS */
+  .game-panel{display:none;}.game-panel.active{display:block;}
+  .game-progress-bar{height:3px;background:var(--dark3);border-radius:2px;margin-bottom:20px;overflow:hidden;}
+  .game-progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width 0.3s;}
 
-  .gold-divider { height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); opacity: 0.3; margin: 28px 0; }
-  .points-highlight { background: rgba(232,160,32,0.08); border: 1px solid rgba(232,160,32,0.2); border-left: 3px solid var(--gold); padding: 14px 18px; margin-bottom: 16px; font-size: 13px; color: var(--cream2); line-height: 1.6; }
+  .playtwice-banner{font-family:'DM Mono',monospace;font-size:11px;padding:8px 14px;background:var(--dark3);border:1px solid var(--border);border-radius:2px;margin-bottom:16px;color:var(--cream2);}
+  .playtwice-banner .pizza-name{color:var(--cpizza);font-weight:600;}
+  .playtwice-banner .punctual-name{color:var(--cpunctual);font-weight:600;}
+  .playtwice-banner .sleepy-name{color:var(--csleepy);font-weight:600;}
 
-  /* SCOREBOARD */
-  .team-score-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin-bottom: 28px; }
-  .team-score-card { border: 1px solid #444446; padding: 20px 16px; text-align: center; position: relative; }
-  .team-score-card.pizza { border-top: 3px solid var(--pizza); }
-  .team-score-card.punctual { border-top: 3px solid var(--punctual); }
-  .team-score-card.sleepy { border-top: 3px solid var(--sleepy); }
-  .team-score-card.leading { box-shadow: 0 0 0 1px var(--gold); border-color: var(--gold); }
-  .team-score-name { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.04em; margin-bottom: 4px; }
-  .team-score-name.pizza { color: #f0906a; }
-  .team-score-name.punctual { color: #6ecf96; }
-  .team-score-name.sleepy { color: #7aaae8; }
-  .team-score-pts { font-family: 'Bebas Neue', sans-serif; font-size: 56px; line-height: 1; color: var(--cream); }
-  .team-score-sub { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--cream2); opacity: 0.5; margin-top: 4px; letter-spacing: 0.08em; }
-  .leader-crown { font-size: 16px; position: absolute; top: 8px; right: 10px; }
+  /* MATCHUP LIST */
+  .matchup-list{display:flex;flex-direction:column;gap:6px;margin-bottom:24px;}
+  .matchup-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;background:var(--dark2);border:1px solid var(--border2);border-radius:3px;padding:6px 8px;}
+  .matchup-row.done{border-color:var(--border);}
+  .player-btn{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;padding:8px 10px;border-radius:2px;border:1px solid transparent;cursor:pointer;transition:all 0.12s;text-align:center;width:100%;background:transparent;}
+  .player-btn.pizza   {color:var(--cpizza);   border-color:rgba(26,78,142,0.3);  background:rgba(26,78,142,0.08);}
+  .player-btn.punctual{color:var(--cpunctual);border-color:rgba(192,57,10,0.3);  background:rgba(192,57,10,0.08);}
+  .player-btn.sleepy  {color:var(--csleepy);  border-color:rgba(85,85,88,0.3);   background:rgba(85,85,88,0.08);}
+  .player-btn.winner.pizza   {background:rgba(26,78,142,0.45);   border-color:var(--cpizza);   color:#fff;font-weight:700;}
+  .player-btn.winner.punctual{background:rgba(192,57,10,0.45);   border-color:var(--cpunctual);color:#fff;font-weight:700;}
+  .player-btn.winner.sleepy  {background:rgba(85,85,88,0.45);    border-color:var(--csleepy);  color:#fff;font-weight:700;}
+  .player-btn.loser{opacity:0.28;}
+  .player-btn:hover:not(.winner):not(.loser){opacity:0.8;transform:scale(1.02);}
+  .vs-label{font-family:'DM Mono',monospace;font-size:10px;color:var(--border);text-align:center;flex-shrink:0;}
 
-  .game-score-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 24px; }
-  .game-score-table th { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 10px; border-bottom: 1px solid #444446; text-align: left; background: var(--dark3); color: var(--cream2); opacity: 0.7; }
-  .game-score-table td { padding: 10px; border-bottom: 1px solid #3a3a3c; vertical-align: middle; }
-  .game-score-table tr:last-child td { border-bottom: none; }
-  .game-name-cell { font-size: 13px; color: var(--cream); font-weight: 500; }
-  .pts-cell { text-align: center; }
-  .pts-display { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1; }
-  .pts-display.pizza { color: #f0906a; }
-  .pts-display.punctual { color: #6ecf96; }
-  .pts-display.sleepy { color: #7aaae8; }
-  .btn-row { display: flex; gap: 4px; justify-content: center; align-items: center; }
-  .score-btn { width: 28px; height: 28px; border: 1px solid #444446; background: var(--dark3); color: var(--cream); cursor: pointer; font-size: 16px; line-height: 1; border-radius: 2px; transition: all 0.1s; display: flex; align-items: center; justify-content: center; }
-  .score-btn:hover { border-color: var(--gold); color: var(--gold); }
-  .score-btn:active { transform: scale(0.92); }
-  .score-val { font-family: 'DM Mono', monospace; font-size: 13px; min-width: 20px; text-align: center; color: var(--cream); }
+  /* 2v2 matchup rows */
+  .matchup-2v2{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;background:var(--dark2);border:1px solid var(--border2);border-radius:3px;padding:8px 10px;margin-bottom:6px;}
+  .pair-btn{font-family:'DM Mono',monospace;font-size:11px;font-weight:500;padding:10px 10px;border-radius:2px;border:1px solid transparent;cursor:pointer;transition:all 0.12s;text-align:center;width:100%;background:transparent;line-height:1.5;}
+  .pair-btn.pizza   {color:var(--cpizza);   border-color:rgba(26,78,142,0.3);  background:rgba(26,78,142,0.08);}
+  .pair-btn.punctual{color:var(--cpunctual);border-color:rgba(192,57,10,0.3);  background:rgba(192,57,10,0.08);}
+  .pair-btn.sleepy  {color:var(--csleepy);  border-color:rgba(85,85,88,0.3);   background:rgba(85,85,88,0.08);}
+  .pair-btn.winner.pizza   {background:rgba(26,78,142,0.45);   border-color:var(--cpizza);   color:#fff;font-weight:700;}
+  .pair-btn.winner.punctual{background:rgba(192,57,10,0.45);   border-color:var(--cpunctual);color:#fff;font-weight:700;}
+  .pair-btn.winner.sleepy  {background:rgba(85,85,88,0.45);    border-color:var(--csleepy);  color:#fff;font-weight:700;}
+  .pair-btn.loser{opacity:0.28;}
+  .pair-btn:hover:not(.winner):not(.loser){opacity:0.8;}
 
-  .mvp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 24px; }
-  .mvp-card { background: var(--dark2); border: 1px solid #444446; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
-  .mvp-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 14px; flex-shrink: 0; }
-  .mvp-avatar.pizza { background: rgba(192,57,10,0.25); color: #f0906a; border: 1px solid rgba(192,57,10,0.4); }
-  .mvp-avatar.punctual { background: rgba(26,107,58,0.25); color: #6ecf96; border: 1px solid rgba(26,107,58,0.4); }
-  .mvp-avatar.sleepy { background: rgba(45,78,142,0.25); color: #7aaae8; border: 1px solid rgba(45,78,142,0.4); }
-  .mvp-name { font-size: 12px; font-weight: 500; color: var(--cream); line-height: 1.2; }
-  .mvp-wins { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--gold); line-height: 1; }
-  .mvp-wins-lbl { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--cream2); opacity: 0.5; letter-spacing: 0.08em; }
-  .mvp-badge { font-family: 'DM Mono', monospace; font-size: 9px; background: rgba(232,160,32,0.15); color: var(--gold); border: 1px solid rgba(232,160,32,0.3); padding: 2px 6px; border-radius: 2px; margin-top: 2px; display: inline-block; }
-  .crown-icon { font-size: 14px; }
+  /* SCORE TABS */
+  .score-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+  .score-tab{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:7px 13px;background:var(--dark3);border:1px solid var(--border);color:var(--cream2);cursor:pointer;border-radius:2px;transition:all 0.15s;}
+  .score-tab.active{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:600;}
+  .score-panel{display:none;}.score-panel.active{display:block;}
 
-  .reset-btn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 16px; background: transparent; border: 1px solid rgba(192,57,40,0.3); color: rgba(192,57,40,0.7); cursor: pointer; border-radius: 2px; transition: all 0.2s; }
-  .reset-btn:hover { border-color: var(--red); color: var(--red); }
+  /* MVP */
+  .mvp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:20px;}
+  .mvp-card{background:var(--dark2);border:1px solid var(--border);padding:12px 14px;display:flex;align-items:center;gap:10px;}
+  .mvp-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;flex-shrink:0;}
+  .mvp-avatar.pizza   {background:rgba(26,78,142,0.25);  color:var(--cpizza);   border:1px solid rgba(26,78,142,0.4);}
+  .mvp-avatar.punctual{background:rgba(192,57,10,0.25); color:var(--cpunctual);border:1px solid rgba(192,57,10,0.4);}
+  .mvp-avatar.sleepy  {background:rgba(85,85,88,0.25);  color:var(--csleepy);  border:1px solid rgba(85,85,88,0.4);}
+  .mvp-name{font-size:12px;font-weight:500;color:var(--cream);line-height:1.2;}
+  .mvp-team-lbl{font-family:'DM Mono',monospace;font-size:9px;color:var(--cream2);opacity:0.5;text-transform:uppercase;}
+  .mvp-wins{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);line-height:1;}
+  .mvp-wins-lbl{font-family:'DM Mono',monospace;font-size:9px;color:var(--cream2);opacity:0.5;}
+  .mvp-badge{font-family:'DM Mono',monospace;font-size:9px;background:rgba(232,160,32,0.15);color:var(--gold);border:1px solid rgba(232,160,32,0.3);padding:2px 6px;border-radius:2px;margin-top:2px;display:inline-block;}
 
-  .score-tabs { display: flex; gap: 6px; margin-bottom: 24px; }
-  .score-tab { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 14px; background: var(--dark3); border: 1px solid #444446; color: var(--cream2); cursor: pointer; border-radius: 2px; transition: all 0.15s; }
-  .score-tab.active { background: var(--gold); color: var(--dark); border-color: var(--gold); font-weight: 600; }
-  .score-panel { display: none; }
-  .score-panel.active { display: block; }
+  /* TEAM EDITOR */
+  .team-editor-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:20px;}
+  .team-col{background:var(--dark2);border:1px solid var(--border);border-radius:4px;overflow:hidden;min-height:180px;transition:box-shadow 0.15s;}
+  .team-col.drop-target{box-shadow:0 0 0 2px var(--gold);background:rgba(232,160,32,0.07);}
+  .team-col-header{padding:11px 13px;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:0.04em;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .team-col-header.pizza   {color:var(--cpizza);   border-top:3px solid var(--pizza);}
+  .team-col-header.punctual{color:var(--cpunctual);border-top:3px solid var(--punctual);}
+  .team-col-header.sleepy  {color:var(--csleepy);  border-top:3px solid var(--sleepy);}
+  .team-col-body{padding:7px;min-height:150px;}
+  .tap-player{font-family:'DM Mono',monospace;font-size:12px;padding:9px 11px;margin-bottom:5px;border-radius:3px;cursor:pointer;user-select:none;border:1px solid transparent;display:flex;align-items:center;gap:7px;transition:all 0.15s;}
+  .tap-player.pizza   {background:rgba(26,78,142,0.15);  color:var(--cpizza);   border-color:rgba(26,78,142,0.3);}
+  .tap-player.punctual{background:rgba(192,57,10,0.15); color:var(--cpunctual);border-color:rgba(192,57,10,0.3);}
+  .tap-player.sleepy  {background:rgba(85,85,88,0.15);  color:var(--csleepy);  border-color:rgba(85,85,88,0.3);}
+  .tap-player.selected{background:var(--gold)!important;color:var(--dark)!important;border-color:var(--gold)!important;font-weight:700;}
+  .team-count{font-family:'DM Mono',monospace;font-size:9px;color:var(--cream2);opacity:0.5;}
+  .editor-hint{font-family:'DM Mono',monospace;font-size:11px;color:var(--gold);background:rgba(232,160,32,0.1);border:1px solid rgba(232,160,32,0.2);padding:8px 13px;border-radius:3px;margin-bottom:14px;display:none;text-align:center;}
+  .editor-warning{font-size:12px;color:#e09060;background:rgba(192,85,10,0.12);border:1px solid rgba(192,85,10,0.3);padding:8px 13px;border-radius:3px;margin-bottom:14px;display:none;}
+  .editor-actions{display:flex;gap:10px;align-items:center;justify-content:flex-end;}
+  .confirm-btn{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:10px 18px;background:var(--gold);color:var(--dark);border:none;cursor:pointer;border-radius:2px;font-weight:600;}
+  .confirm-btn:hover{opacity:0.85;}
+  .confirm-btn:disabled{opacity:0.35;cursor:not-allowed;}
 
-  .footer { text-align: center; padding: 40px 20px; border-top: 1px solid #3a3a3c; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--cream2); opacity: 0.3; text-transform: uppercase; }
-  .team-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
-  .team-legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--cream2); }
-  .legend-dot { width: 8px; height: 8px; border-radius: 2px; }
-  .legend-pizza { background: rgba(192,57,10,0.6); }
-  .legend-punctual { background: rgba(26,107,58,0.6); }
-  .legend-sleepy { background: rgba(45,78,142,0.6); }
+  /* BENCH */
+  .bench-section{background:var(--dark2);border:1px solid var(--border);border-radius:4px;padding:12px;margin-bottom:16px;}
+  .bench-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream2);opacity:0.6;margin-bottom:10px;}
+  .bench-players{display:flex;flex-wrap:wrap;gap:6px;}
+  .tap-player.bench{background:var(--dark3);color:var(--cream2);border-color:var(--border);}
+  .tap-player.bench.selected{background:var(--gold)!important;color:var(--dark)!important;border-color:var(--gold)!important;font-weight:700;}
+  .bench-reset-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;background:transparent;border:1px solid var(--border);color:var(--cream2);cursor:pointer;border-radius:2px;margin-left:auto;display:block;}
+  .bench-reset-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .reset-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:8px 14px;background:transparent;border:1px solid rgba(192,57,40,0.3);color:rgba(192,57,40,0.7);cursor:pointer;border-radius:2px;}
+  .reset-btn:hover{border-color:#C0392B;color:#C0392B;}
+  .footer{text-align:center;padding:36px 20px;border-top:1px solid var(--border2);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--cream2);opacity:0.3;text-transform:uppercase;}
 
-  @media(max-width: 600px) {
-    .team-score-grid { grid-template-columns: 1fr; }
-    .score-tabs { flex-wrap: wrap; }
+  @media(max-width:600px){
+    .team-score-grid{grid-template-columns:1fr;}
+    .team-editor-grid{grid-template-columns:1fr;}
+    .matchup-row{grid-template-columns:1fr auto 1fr;}
   }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <div class="hero-eyebrow">Glenn's Bachelor Party · Austin, TX · May 28–31, 2026</div>
+  <div class="hero-eyebrow">Glenn's Bachelor Party · Austin, TX · May 30, 2026</div>
   <h1>Beer<span>lympics</span></h1>
   <div class="hero-sub">Saturday, May 30, 2026 · Official Rulebook & Live Scoreboard</div>
   <div class="hero-badges">
     <span class="badge">Team Pizza</span>
-    <span class="badge">Team Punctual</span>
+    <span class="badge">Team Late</span>
     <span class="badge">Team Sleepy</span>
     <span class="badge">10 Games</span>
-    <span class="badge">1 Champion</span>
+    <span class="badge">96 Matchups</span>
   </div>
 </div>
 
 <nav class="nav">
   <button class="nav-btn active" onclick="showSection('rules',this)">Game Rules</button>
-  <button class="nav-btn" onclick="showSection('matrix',this)">Matchup Matrix</button>
   <button class="nav-btn" onclick="showSection('scoring',this)">Scoreboard</button>
+  <button class="nav-btn" onclick="showSection('teams',this)">Teams</button>
 </nav>
 
 <div class="main">
 
-  <!-- GAME RULES -->
+  <!-- RULES -->
   <div class="section active" id="section-rules">
     <div class="section-header">
       <h2>Game <span>Rules</span></h2>
-      <p>Click a game to view its format, win condition, and full ruleset.</p>
+      <p>Select a game to view its format, win condition, and full ruleset.</p>
     </div>
     <div class="game-selector" id="rule-pills"></div>
     <div id="rule-cards"></div>
-  </div>
-
-  <!-- MATRIX -->
-  <div class="section" id="section-matrix">
-    <div class="section-header">
-      <h2>Matchup <span>Matrix</span></h2>
-      <p>Each team plays every other team 5 times per game — once per player. No player faces the same opponent twice in the same game.</p>
-    </div>
-    <div class="stat-grid">
-      <div class="stat-box"><div class="stat-num">3</div><div class="stat-lbl">Teams</div></div>
-      <div class="stat-box"><div class="stat-num">5</div><div class="stat-lbl">Per team</div></div>
-      <div class="stat-box"><div class="stat-num">5</div><div class="stat-lbl">Rounds/game</div></div>
-      <div class="stat-box"><div class="stat-num">15</div><div class="stat-lbl">Simultaneous</div></div>
-    </div>
-    <div class="team-legend">
-      <div class="team-legend-item"><div class="legend-dot legend-pizza"></div> Team Pizza</div>
-      <div class="team-legend-item"><div class="legend-dot legend-punctual"></div> Team Punctual</div>
-      <div class="team-legend-item"><div class="legend-dot legend-sleepy"></div> Team Sleepy</div>
-    </div>
-    <div class="matrix-controls" id="matrix-pills"></div>
-    <div class="matrix-table-wrap">
-      <table class="matrix-table">
-        <thead><tr><th>Round</th><th>Pizza vs Punctual</th><th>Pizza vs Sleepy</th><th>Punctual vs Sleepy</th></tr></thead>
-        <tbody id="matrix-body"></tbody>
-      </table>
-    </div>
   </div>
 
   <!-- SCOREBOARD -->
   <div class="section" id="section-scoring">
     <div class="section-header">
       <h2>Live <span>Scoreboard</span></h2>
-      <p>Tap +/- to update scores in real time. All data saves automatically to this browser.</p>
+      <p>No sit-outs — every player plays every game. One player per game gets a bonus second matchup. Tap a player's name to mark them the winner. Tap again to clear.</p>
     </div>
 
-    <!-- TEAM TOTALS -->
     <div class="team-score-grid" id="team-totals"></div>
 
-    <!-- SUB TABS -->
     <div class="score-tabs">
-      <button class="score-tab active" onclick="showScorePanel('game-breakdown',this)">By game</button>
-      <button class="score-tab" onclick="showScorePanel('mvp-board',this)">MVP leaderboard</button>
+      <button class="score-tab active" onclick="showScorePanel('games',this)">Games</button>
+      <button class="score-tab" onclick="showScorePanel('mvp',this)">MVP</button>
     </div>
 
-    <!-- GAME BREAKDOWN -->
-    <div class="score-panel active" id="score-panel-game-breakdown">
-      <table class="game-score-table">
-        <thead>
-          <tr>
-            <th style="width:30%;">Game</th>
-            <th style="text-align:center;color:#f0906a;">Pizza</th>
-            <th style="text-align:center;color:#6ecf96;">Punctual</th>
-            <th style="text-align:center;color:#7aaae8;">Sleepy</th>
-          </tr>
-        </thead>
-        <tbody id="game-breakdown-body"></tbody>
-      </table>
+    <div class="score-panel active" id="score-panel-games">
+      <div class="game-nav" id="game-nav"></div>
+      <div id="game-panels"></div>
     </div>
 
-    <!-- MVP LEADERBOARD -->
-    <div class="score-panel" id="score-panel-mvp-board">
+    <div class="score-panel" id="score-panel-mvp">
       <div class="mvp-grid" id="mvp-grid"></div>
     </div>
 
     <div class="gold-divider"></div>
     <div style="display:flex;justify-content:flex-end;">
-      <button class="reset-btn" onclick="confirmReset()">Reset all scores</button>
+      <button class="reset-btn" id="reset-btn" onclick="confirmReset()">Reset all scores</button>
     </div>
   </div>
 
+  <!-- TEAMS -->
+  <div class="section" id="section-teams">
+    <div class="section-header">
+      <h2>Draft <span>Teams</span></h2>
+      <p>Tap a player from the bench to select them, then tap a team to assign them. Tap a player already on a team to send them back to the bench.</p>
+    </div>
+    <div class="editor-hint" id="editor-hint"></div>
+    <div class="editor-warning" id="editor-warning"></div>
+    <div class="bench-section" id="bench-section">
+      <div style="display:flex;align-items:center;margin-bottom:10px;">
+        <div class="bench-label" style="margin-bottom:0;">Bench</div>
+        <button class="bench-reset-btn" onclick="resetToBench()">Reset all to bench</button>
+      </div>
+      <div class="bench-players" id="bench-players"></div>
+    </div>
+    <div class="team-editor-grid" id="team-editor-grid"></div>
+    <div class="editor-actions">
+      <span style="font-family:'DM Mono',monospace;font-size:10px;color:var(--cream2);opacity:0.5;" id="editor-status"></span>
+      <button class="confirm-btn" id="confirm-teams-btn" onclick="confirmTeams()">Confirm teams & reset scores</button>
+    </div>
+  </div>
 </div>
 
-<div class="footer">Beerlympics Austin 2026 · For Glenn · May 28–31</div>
+<div class="footer">Beerlympics Austin 2026 · For Glenn · May 30</div>
 
 <script>
-const TEAMS = {
-  pizza:    { name: 'Team Pizza',    short: 'Pizza',    cls: 'pizza',    players: ['Glenn','Chad I','Matt S','Craig B','Luke S'] },
-  punctual: { name: 'Team Punctual', short: 'Punctual', cls: 'punctual', players: ['Dan O','Tim C','Tommy A','Brandon M','Jason R'] },
-  sleepy:   { name: 'Team Sleepy',   short: 'Sleepy',   cls: 'sleepy',   players: ['JD','Mike F','Matt P','Dan D','Nico L'] }
-};
-const TEAM_KEYS = ['pizza','punctual','sleepy'];
-
+// ── GAMES ────────────────────────────────────────────────────────────────────
 const GAMES = [
-  { name: 'Beer Pong',   format: '6-cup, 1v1', suggested: false, win: 'Sink all 6 opponent cups first', rules: ['6 cups per side in triangle formation, filled to a consistent level.','Each player throws one ball per turn — both players shoot each round.','Fire: if both players sink a cup on the same turn, each shoots again.','Re-rack: each team gets one re-rack call during the game.','Redemption: when the last cup is sunk, the losing side gets one final round of redemption shots. If cups are cleared, overtime with 3 cups each.','Bounce rule: a bounced ball counts as 2 cups if it lands, but defense may swat bounced balls.','Elbow/wrist rule: elbow must not cross the table edge at release.'] },
-  { name: 'Ping Pong',   format: 'Best of 3 to 11, serve scoring', suggested: false, win: 'Win 2 of 3 games', rules: ['Serve scoring: points scored on every rally regardless of server.','Serve alternates every 2 points. At 10–10 deuce, alternates every point.','Each game to 11, win by 2.','Serve tossed at least 6 inches from an open palm.','Ball bounces on server\'s side, clears net, lands on receiver\'s side.','A let (net touch on legal serve) = re-serve.','First to win 2 games wins the match.'] },
-  { name: 'Billiards',   format: '1 game of 8-ball, 1v1', suggested: false, win: 'Legally pocket the 8-ball after clearing your group', rules: ['Solids (1–7) vs stripes (9–15). Group set on break by first ball pocketed.','Legal break: cue ball behind head string; pocket a ball or drive 4 to rails.','Scratch on break: opponent takes ball-in-hand behind head string.','Call shot: must call ball and pocket before shooting. Slop doesn\'t count.','Ball in hand on any foul — placed anywhere on table.','Fouls: scratch, wrong group first, no rail contact after hit.','Win: clear your group then call and sink the 8-ball.','Instant loss: pocketing 8-ball early, scratching on 8-ball, or knocking it off the table.'] },
-  { name: 'Air Hockey',  format: '1v1, first to 7', suggested: false, win: 'First to 7 goals', rules: ['Each player defends one goal. Mallets stay on their side of center.','Puck must be in your half before shooting.','Goal counts when puck fully crosses the goal line.','After a goal, scored-on player gets possession.','Puck off table: last to touch loses possession.','Mallet must stay flat on the surface.','No topping the puck — foul = possession change.','First to 7 wins.'] },
-  { name: 'Foosball',    format: '1v1, first to 11', suggested: false, win: 'First to 11 goals', rules: ['1v1: each player controls all rods on their side.','Coin flip for first possession. After goals, scored-on player serves from 5-bar.','No spinning: rods may not rotate more than 360° before or after contact.','Dead ball: possession to nearest defensive rod.','Ball off table: opponent serves from 5-bar.','Jarring the table is a foul — opponent takes possession.','First to 11 wins.'] },
-  { name: 'Cornhole',    format: 'To 21, net scoring', suggested: false, win: 'First to reach exactly 21', rules: ['Net (cancellation) scoring: only the difference scores each round.','Bag in hole = 3 pts. Bag on board = 1 pt. Ground = 0.','Players alternate throwing bags one at a time from opposite sides.','Bust rule: exceeding 21 resets score to 13.','Bags must be tossed underhand from behind the board\'s front edge.','Bags bouncing off the ground don\'t count — remove them.','First to exactly 21 wins.'] },
-  { name: 'Ladder Ball',  format: '1v1, first to exactly 21', suggested: true, win: 'First to reach exactly 21 (cancellation scoring)', rules: ['3 bolas per player. Players throw from the same side, alternating.','Top = 3 pts · Middle = 2 pts · Bottom = 1 pt.','Cancellation scoring: cancel equal points each round, difference scores.','Bust: exceeding 21 resets to 13 (same as cornhole).','Bolas tossed underhand; can wrap any rung.','Ground-bounce bolas don\'t count.','Bola knocked off by opponent doesn\'t score.','First to exactly 21 wins.'] },
-  { name: 'Putt Putt',   format: 'H-O-R-S-E style, 1v1', suggested: false, win: 'Force opponent to spell H-O-R-S-E', rules: ['Setter putts first and sets the target stroke count.','Opponent must match or beat setter\'s strokes or earns a letter.','Setter misses (4+ strokes): hole is free, no letter at risk.','Max 5 strokes per hole. Both miss = move on.','Players alternate who sets first each hole.','First to spell H-O-R-S-E loses.'] },
-  { name: 'Pickleball',  format: 'Rally scoring to 15, win by 2', suggested: true, win: 'First to 15, win by 2', rules: ['Rally scoring: point on every rally regardless of server.','Serve: underhand, below waist, into diagonal service box.','No volleying in the kitchen (7 ft from net).','Double bounce rule: both sides must let ball bounce once after the serve before volleying.','Fault = out of bounds, net, kitchen volley, or serve into kitchen.','Winner of rally serves next.','First to 15, win by 2. No cap.'] },
-  { name: 'Buck Hunter', format: 'Best of 3 rounds, high score', suggested: false, win: 'Higher cumulative score across 3 rounds', rules: ['Each player plays 3 solo rounds. No interference during a run.','Score based on animals harvested and bonus targets.','Shooting a doe subtracts from your score.','Players alternate rounds: P1 rd1 → P2 rd1 → P1 rd2, etc.','Highest cumulative score after 3 rounds wins.','Tie: one sudden-death bonus round each.','No touching opponent\'s gun during a live round.'] }
+  {name:'Beer Pong',   format:'2v2, 6-cup',                   is2v2:true,  suggested:false,win:'Sink all 6 opponent cups first',                      rules:['6 cups per side in triangle formation.','Each player on a team throws once per turn.','Fire: both partners sink on same turn, shoot again.','Re-rack: one call per team per game.','Redemption round when last cup sinks; overtime = 3 cups each if cleared.','Bounced ball = 2 cups but can be swatted.','Elbows behind table edge at release.']},
+  {name:'Ping Pong',   format:'Best of 3 to 11, serve scoring',is2v2:false, suggested:false,win:'Win 2 of 3 games',                                    rules:['Point on every rally regardless of server.','Serve alternates every 2 points; every point at 10–10.','Games to 11, win by 2.','Serve tossed 6+ inches from open palm.','Net touch on legal serve = re-serve.']},
+  {name:'Billiards',   format:'1 game of 8-ball',              is2v2:false, suggested:false,win:'Legally pocket the 8-ball after clearing your group', rules:['Solids (1–7) vs stripes (9–15); group set on break.','Legal break: cue ball behind head string.','Call shot required.','Ball in hand on any foul.','Instant loss: 8-ball early, scratch on 8, or 8 off table.']},
+  {name:'Air Hockey',  format:'1v1, first to 7',               is2v2:false, suggested:false,win:'First to 7 goals',                                    rules:['Mallets stay on own side of center.','Puck in your half before shooting.','Scored-on player gets possession.','No topping the puck.','First to 7 wins.']},
+  {name:'Foosball',    format:'1v1, first to 11',              is2v2:false, suggested:false,win:'First to 11 goals',                                   rules:['Each player controls all rods on their side.','Coin flip for possession; scored-on serves from 5-bar.','No spinning (max 360°).','Jarring table is a foul.','First to 11 wins.']},
+  {name:'Cornhole',    format:'2v2, to 21 net scoring',        is2v2:true,  suggested:false,win:'First to exactly 21',                                 rules:['Net (cancellation) scoring: only difference scores each round.','Hole = 3 pts, board = 1 pt, ground = 0.','Partners stand at opposite boards, alternate throws with opponents.','Bust: over 21 resets to 13.','Ground-bounce bags removed.']},
+  {name:'Ladder Ball', format:'1v1, first to exactly 21',      is2v2:false, suggested:true, win:'First to exactly 21 (cancellation scoring)',           rules:['3 bolas per player; throw from same side alternating.','Top = 3 pts, Middle = 2 pts, Bottom = 1 pt.','Cancellation scoring — difference scores each round.','Bust: over 21 resets to 13.','Ground-bounce bolas don\'t count.']},
+  {name:'Putt Putt',   format:'H-O-R-S-E style',              is2v2:false, suggested:false,win:'Force opponent to spell H-O-R-S-E',                   rules:['Setter putts first and sets the target.','Opponent must match or beat setter\'s strokes or earns a letter.','Setter misses (4+ strokes): hole is free.','Max 5 strokes per hole.','First to spell H-O-R-S-E loses.']},
+  {name:'Pickleball',  format:'Rally scoring to 15, win by 2', is2v2:false, suggested:true, win:'First to 15, win by 2',                                rules:['Point on every rally.','Serve underhand below waist into diagonal box.','No volleying in kitchen (7 ft from net).','Double bounce rule after serve.','First to 15, win by 2.']},
+  {name:'Buck Hunter', format:'Best of 3 rounds, high score',  is2v2:false, suggested:false,win:'Higher cumulative score across 3 rounds',              rules:['3 solo rounds each; no interference.','Score on animals + bonus targets.','Doe = score penalty.','Alternate rounds P1→P2→P1…','Tie: one sudden-death round each.']}
 ];
 
-// STATE
-const STORAGE_KEY = 'beerlympics_scores_v2';
-let state = loadState();
+// ── TEAMS ────────────────────────────────────────────────────────────────────
+const TEAMS_KEY='beerlympics_teams_v2';
+const DEFAULT_TEAMS={
+  pizza:   {name:'Team Pizza', short:'Pizza', cls:'pizza',    players:['Glenn','Chad I','Matt S','Craig B','Luke S']},
+  punctual:{name:'Team Late',  short:'Late',  cls:'punctual', players:['Dan O','Tim C','Tommy A','Brandon M','Jason R']},
+  sleepy:  {name:'Team Sleepy',short:'Sleepy',cls:'sleepy',   players:['JD','Mike F','Matt P','Dan D','Nico L']}
+};
+const TEAM_KEYS=['pizza','punctual','sleepy'];
+function loadTeams(){try{const s=localStorage.getItem(TEAMS_KEY);return s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_TEAMS));}catch(e){return JSON.parse(JSON.stringify(DEFAULT_TEAMS));}}
+function saveTeams(t){localStorage.setItem(TEAMS_KEY,JSON.stringify(t));}
+const TEAMS=loadTeams();
 
-function defaultState() {
-  const gameScores = {};
-  GAMES.forEach(g => {
-    gameScores[g.name] = { pizza: 0, punctual: 0, sleepy: 0 };
-  });
-  const playerWins = {};
-  TEAM_KEYS.forEach(tk => {
-    TEAMS[tk].players.forEach(p => { playerWins[p] = 0; });
-  });
-  return { gameScores, playerWins };
+// ── HARDCODED SCHEDULE ───────────────────────────────────────────────────────
+// Each 1v1 game: 8 matchups, all 15 players play, 1 player gets a bonus second matchup.
+// Each 2v2 game: 4 matchups, all 15 players play, 1 pair gets a bonus second matchup.
+const SCHEDULE_1V1 = {
+  'Ping Pong': {doubler:'Craig B',doubleTeam:'pizza',matchups:[
+    {p1:'Craig B',t1:'pizza',p2:'Tim C',t2:'punctual'},
+    {p1:'Craig B',t1:'pizza',p2:'Dan O',t2:'punctual'},
+    {p1:'Luke S',t1:'pizza',p2:'Jason R',t2:'punctual'},
+    {p1:'Glenn',t1:'pizza',p2:'Matt P',t2:'sleepy'},
+    {p1:'Chad I',t1:'pizza',p2:'Dan D',t2:'sleepy'},
+    {p1:'Matt S',t1:'pizza',p2:'Nico L',t2:'sleepy'},
+    {p1:'Brandon M',t1:'punctual',p2:'JD',t2:'sleepy'},
+    {p1:'Tommy A',t1:'punctual',p2:'Mike F',t2:'sleepy'},
+  ]},
+  'Billiards': {doubler:'Tommy A',doubleTeam:'punctual',matchups:[
+    {p1:'Craig B',t1:'pizza',p2:'Tommy A',t2:'punctual'},
+    {p1:'Glenn',t1:'pizza',p2:'Tim C',t2:'punctual'},
+    {p1:'Luke S',t1:'pizza',p2:'Dan O',t2:'punctual'},
+    {p1:'Matt S',t1:'pizza',p2:'Dan D',t2:'sleepy'},
+    {p1:'Chad I',t1:'pizza',p2:'Nico L',t2:'sleepy'},
+    {p1:'Brandon M',t1:'punctual',p2:'Mike F',t2:'sleepy'},
+    {p1:'Jason R',t1:'punctual',p2:'Matt P',t2:'sleepy'},
+    {p1:'Tommy A',t1:'punctual',p2:'JD',t2:'sleepy'},
+  ]},
+  'Air Hockey': {doubler:'Dan D',doubleTeam:'sleepy',matchups:[
+    {p1:'Matt S',t1:'pizza',p2:'Brandon M',t2:'punctual'},
+    {p1:'Craig B',t1:'pizza',p2:'Jason R',t2:'punctual'},
+    {p1:'Chad I',t1:'pizza',p2:'Matt P',t2:'sleepy'},
+    {p1:'Luke S',t1:'pizza',p2:'Dan D',t2:'sleepy'},
+    {p1:'Glenn',t1:'pizza',p2:'JD',t2:'sleepy'},
+    {p1:'Tommy A',t1:'punctual',p2:'Nico L',t2:'sleepy'},
+    {p1:'Dan O',t1:'punctual',p2:'Mike F',t2:'sleepy'},
+    {p1:'Tim C',t1:'punctual',p2:'Dan D',t2:'sleepy'},
+  ]},
+  'Foosball': {doubler:'Chad I',doubleTeam:'pizza',matchups:[
+    {p1:'Chad I',t1:'pizza',p2:'Tommy A',t2:'punctual'},
+    {p1:'Luke S',t1:'pizza',p2:'Brandon M',t2:'punctual'},
+    {p1:'Chad I',t1:'pizza',p2:'Dan O',t2:'punctual'},
+    {p1:'Matt S',t1:'pizza',p2:'Mike F',t2:'sleepy'},
+    {p1:'Glenn',t1:'pizza',p2:'Dan D',t2:'sleepy'},
+    {p1:'Craig B',t1:'pizza',p2:'Nico L',t2:'sleepy'},
+    {p1:'Tim C',t1:'punctual',p2:'Matt P',t2:'sleepy'},
+    {p1:'Jason R',t1:'punctual',p2:'JD',t2:'sleepy'},
+  ]},
+  'Ladder Ball': {doubler:'Tim C',doubleTeam:'punctual',matchups:[
+    {p1:'Luke S',t1:'pizza',p2:'Tommy A',t2:'punctual'},
+    {p1:'Glenn',t1:'pizza',p2:'Jason R',t2:'punctual'},
+    {p1:'Chad I',t1:'pizza',p2:'Tim C',t2:'punctual'},
+    {p1:'Craig B',t1:'pizza',p2:'Matt P',t2:'sleepy'},
+    {p1:'Matt S',t1:'pizza',p2:'JD',t2:'sleepy'},
+    {p1:'Tim C',t1:'punctual',p2:'Mike F',t2:'sleepy'},
+    {p1:'Dan O',t1:'punctual',p2:'Dan D',t2:'sleepy'},
+    {p1:'Brandon M',t1:'punctual',p2:'Nico L',t2:'sleepy'},
+  ]},
+  'Putt Putt': {doubler:'Mike F',doubleTeam:'sleepy',matchups:[
+    {p1:'Chad I',t1:'pizza',p2:'Brandon M',t2:'punctual'},
+    {p1:'Glenn',t1:'pizza',p2:'Dan O',t2:'punctual'},
+    {p1:'Luke S',t1:'pizza',p2:'Mike F',t2:'sleepy'},
+    {p1:'Craig B',t1:'pizza',p2:'JD',t2:'sleepy'},
+    {p1:'Matt S',t1:'pizza',p2:'Matt P',t2:'sleepy'},
+    {p1:'Tim C',t1:'punctual',p2:'Nico L',t2:'sleepy'},
+    {p1:'Tommy A',t1:'punctual',p2:'Dan D',t2:'sleepy'},
+    {p1:'Jason R',t1:'punctual',p2:'Mike F',t2:'sleepy'},
+  ]},
+  'Pickleball': {doubler:'Dan D',doubleTeam:'sleepy',matchups:[
+    {p1:'Matt S',t1:'pizza',p2:'Tommy A',t2:'punctual'},
+    {p1:'Craig B',t1:'pizza',p2:'Jason R',t2:'punctual'},
+    {p1:'Luke S',t1:'pizza',p2:'JD',t2:'sleepy'},
+    {p1:'Chad I',t1:'pizza',p2:'Mike F',t2:'sleepy'},
+    {p1:'Glenn',t1:'pizza',p2:'Nico L',t2:'sleepy'},
+    {p1:'Brandon M',t1:'punctual',p2:'Dan D',t2:'sleepy'},
+    {p1:'Tim C',t1:'punctual',p2:'Dan D',t2:'sleepy'},
+    {p1:'Dan O',t1:'punctual',p2:'Matt P',t2:'sleepy'},
+  ]},
+  'Buck Hunter': {doubler:'Dan O',doubleTeam:'punctual',matchups:[
+    {p1:'Luke S',t1:'pizza',p2:'Tim C',t2:'punctual'},
+    {p1:'Matt S',t1:'pizza',p2:'Jason R',t2:'punctual'},
+    {p1:'Glenn',t1:'pizza',p2:'Tommy A',t2:'punctual'},
+    {p1:'Chad I',t1:'pizza',p2:'JD',t2:'sleepy'},
+    {p1:'Craig B',t1:'pizza',p2:'Mike F',t2:'sleepy'},
+    {p1:'Dan O',t1:'punctual',p2:'Nico L',t2:'sleepy'},
+    {p1:'Dan O',t1:'punctual',p2:'Matt P',t2:'sleepy'},
+    {p1:'Brandon M',t1:'punctual',p2:'Dan D',t2:'sleepy'},
+  ]},
+};
+
+const SCHEDULE_2V2 = {
+  'Beer Pong': {
+    doubler:'Glenn + Dan O play twice',doubleTeam:'pizza',
+    sitOut:'Nico L',sitOutTeam:'sleepy',
+    matchups:[
+      {t1:'pizza',p1:['Glenn','Chad I'],t2:'punctual',p2:['Dan O','Tim C']},
+      {t1:'pizza',p1:['Matt S','Craig B'],t2:'punctual',p2:['Tommy A','Brandon M']},
+      {t1:'pizza',p1:['Luke S','Glenn'],t2:'sleepy',p2:['JD','Mike F']},
+      {t1:'punctual',p1:['Jason R','Dan O'],t2:'sleepy',p2:['Matt P','Dan D']},
+    ]},
+  'Cornhole': {
+    doubler:'Chad I + JD play twice',doubleTeam:'pizza',
+    sitOut:'Dan O',sitOutTeam:'punctual',
+    matchups:[
+      {t1:'pizza',p1:['Chad I','Matt S'],t2:'punctual',p2:['Tim C','Tommy A']},
+      {t1:'pizza',p1:['Craig B','Luke S'],t2:'sleepy',p2:['Mike F','Matt P']},
+      {t1:'pizza',p1:['Glenn','Chad I'],t2:'sleepy',p2:['JD','Nico L']},
+      {t1:'punctual',p1:['Brandon M','Jason R'],t2:'sleepy',p2:['Dan D','JD']},
+    ]},
+};
+
+// ── RESULTS ──────────────────────────────────────────────────────────────────
+const RESULTS_KEY='beerlympics_results_v5';
+let results=loadResults();
+function loadResults(){try{const s=localStorage.getItem(RESULTS_KEY);return s?JSON.parse(s):{};}catch(e){return {};}}
+function saveResults(){localStorage.setItem(RESULTS_KEY,JSON.stringify(results));}
+
+function getR(key){return results[key]||null;}
+function toggleR(key,winner){results[key]=(results[key]===winner)?null:winner;saveResults();renderAll();}
+
+// ── DERIVED ──────────────────────────────────────────────────────────────────
+function playerWins(name){return Object.values(results).filter(v=>v===name).length;}
+function teamWins(tk){const p=TEAMS[tk].players;return Object.values(results).filter(v=>v&&p.includes(v)).length;}
+
+function gameProgress(gameName){
+  const g=GAMES.find(x=>x.name===gameName);
+  const sched=g.is2v2?SCHEDULE_2V2[gameName]:SCHEDULE_1V1[gameName];
+  const total=sched.matchups.length;
+  const done=sched.matchups.filter((_,i)=>getR(gameName+'|'+i)).length;
+  return{total,done};
 }
 
-function loadState() {
-  try {
-    const s = localStorage.getItem(STORAGE_KEY);
-    return s ? JSON.parse(s) : defaultState();
-  } catch(e) { return defaultState(); }
-}
-
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-function teamTotal(tk) {
-  return GAMES.reduce((sum, g) => sum + (state.gameScores[g.name][tk] || 0), 0);
-}
-
-function leadingTeam() {
-  const totals = TEAM_KEYS.map(tk => ({ tk, pts: teamTotal(tk) }));
-  totals.sort((a,b) => b.pts - a.pts);
-  if (totals[0].pts === 0) return null;
-  if (totals[0].pts === totals[1].pts) return null;
-  return totals[0].tk;
-}
-
-function renderTeamTotals() {
-  const leader = leadingTeam();
-  const container = document.getElementById('team-totals');
-  container.innerHTML = TEAM_KEYS.map(tk => {
-    const t = TEAMS[tk];
-    const pts = teamTotal(tk);
-    const isLeader = leader === tk;
-    return `<div class="team-score-card ${t.cls}${isLeader ? ' leading' : ''}">
-      ${isLeader ? '<div class="leader-crown">&#9733;</div>' : ''}
-      <div class="team-score-name ${t.cls}">${t.short}</div>
+// ── RENDER TOTALS ─────────────────────────────────────────────────────────────
+function renderTeamTotals(){
+  const tots=TEAM_KEYS.map(tk=>({tk,pts:teamWins(tk)}));
+  const mx=Math.max(...tots.map(t=>t.pts));
+  document.getElementById('team-totals').innerHTML=tots.map(({tk,pts})=>{
+    const t=TEAMS[tk],lead=pts>0&&pts===mx;
+    return `<div class="team-score-card ${t.cls}${lead?' leading':''}">
+      ${lead?'<div class="leader-crown">&#9733;</div>':''}
+      <div class="team-score-name">${t.short}</div>
       <div class="team-score-pts">${pts}</div>
-      <div class="team-score-sub">/ 100 max pts</div>
+      <div class="team-score-sub">/ 48 max</div>
     </div>`;
   }).join('');
 }
 
-function changeScore(game, tk, delta) {
-  const cur = state.gameScores[game][tk] || 0;
-  state.gameScores[game][tk] = Math.max(0, cur + delta);
-  saveState();
-  renderAll();
-}
-
-function changePlayerWins(player, delta) {
-  state.playerWins[player] = Math.max(0, (state.playerWins[player] || 0) + delta);
-  saveState();
-  renderMVP();
-}
-
-function renderGameBreakdown() {
-  const body = document.getElementById('game-breakdown-body');
-  body.innerHTML = GAMES.map(g => {
-    const row = state.gameScores[g.name];
-    return `<tr>
-      <td class="game-name-cell">${g.name}</td>
-      ${TEAM_KEYS.map(tk => `<td class="pts-cell">
-        <div class="btn-row">
-          <button class="score-btn" onclick="changeScore('${g.name}','${tk}',-1)">−</button>
-          <span class="score-val">${row[tk]||0}</span>
-          <button class="score-btn" onclick="changeScore('${g.name}','${tk}',1)">+</button>
-        </div>
-      </td>`).join('')}
-    </tr>`;
+// ── RENDER GAME NAV ───────────────────────────────────────────────────────────
+function renderGameNav(){
+  document.getElementById('game-nav').innerHTML=GAMES.map((g,i)=>{
+    const{total,done}=gameProgress(g.name);
+    return `<button class="game-nav-btn${done>0?' has-results':''}${done===total&&total>0?' completed':''}"
+      onclick="showGame(${i},this)">${g.name}<span class="prog-dot"></span></button>`;
   }).join('');
 }
 
-function renderMVP() {
-  const players = [];
-  TEAM_KEYS.forEach(tk => {
-    TEAMS[tk].players.forEach(p => {
-      players.push({ name: p, team: tk, wins: state.playerWins[p] || 0 });
+function teamCls(t){return t==='punctual'?'punctual':t;}
+
+function doublerBanner(doubler, doubleTeam){
+  const cls = teamCls(doubleTeam);
+  return `<div class="playtwice-banner">plays twice: <span class="${cls}-name">${doubler}</span></div>`;
+}
+
+// Derive who plays twice in a 1v1 game from the actual matchup data
+function getDerivedDoubler(gameName){
+  const sched = SCHEDULE_1V1[gameName];
+  const counts = {};
+  sched.matchups.forEach(m=>{
+    counts[m.p1] = (counts[m.p1]||0)+1;
+    counts[m.p2] = (counts[m.p2]||0)+1;
+  });
+  const doubler = Object.entries(counts).find(([p,c])=>c===2);
+  if(!doubler) return {name:'—', team:'pizza'};
+  const name = doubler[0];
+  const team = TEAM_KEYS.find(tk=>TEAMS[tk].players.includes(name))||sched.doubleTeam;
+  return {name, team};
+}
+
+// Derive who sits out a 2v2 game — player in the team roster not appearing in any matchup
+function getDerived2v2SitOut(gameName){
+  const sched = SCHEDULE_2V2[gameName];
+  const playing = new Set(sched.matchups.flatMap(m=>[...m.p1,...m.p2]));
+  const sitOuts = [];
+  TEAM_KEYS.forEach(tk=>{
+    TEAMS[tk].players.forEach(p=>{
+      if(!playing.has(p)) sitOuts.push({name:p, team:tk});
     });
   });
-  players.sort((a,b) => b.wins - a.wins);
-  const maxWins = players[0].wins;
-  const grid = document.getElementById('mvp-grid');
-  grid.innerHTML = players.map((p, i) => {
-    const isMVP = p.wins > 0 && p.wins === maxWins;
-    const initials = p.name.split(' ').map(x=>x[0]).join('').substring(0,2).toUpperCase();
+  return sitOuts;
+}
+
+// Derive who plays twice in a 2v2 game
+function getDerived2v2Doublers(gameName){
+  const sched = SCHEDULE_2V2[gameName];
+  const counts = {};
+  sched.matchups.forEach(m=>{
+    [...m.p1,...m.p2].forEach(p=>{ counts[p]=(counts[p]||0)+1; });
+  });
+  return Object.entries(counts)
+    .filter(([,c])=>c===2)
+    .map(([name])=>({name, team: TEAM_KEYS.find(tk=>TEAMS[tk].players.includes(name))||'pizza'}));
+}
+
+// ── RENDER GAME PANELS ────────────────────────────────────────────────────────
+function renderGamePanels(){
+  const container=document.getElementById('game-panels');
+  container.innerHTML=GAMES.map((g,gi)=>{
+    const{total,done}=gameProgress(g.name);
+    const pct=total?Math.round(done/total*100):0;
+
+    if(g.is2v2){
+      const sched=SCHEDULE_2V2[g.name];
+      const rows=sched.matchups.map((m,mi)=>{
+        const key=g.name+'|'+mi;
+        const winner=getR(key);
+        const p1won=winner&&m.p1.includes(winner);
+        const p2won=winner&&m.p2.includes(winner);
+        const t1cls=teamCls(m.t1); const t2cls=teamCls(m.t2);
+        return `<div class="matchup-2v2">
+          <button class="pair-btn ${t1cls}${p1won?' winner':''}${p2won?' loser':''}"
+            onclick="toggleR('${key}','${m.p1[0]}')">
+            ${m.p1[0]}<br>${m.p1[1]}
+          </button>
+          <div class="vs-label">VS</div>
+          <button class="pair-btn ${t2cls}${p2won?' winner':''}${p1won?' loser':''}"
+            onclick="toggleR('${key}','${m.p2[0]}')">
+            ${m.p2[0]}<br>${m.p2[1]}
+          </button>
+        </div>`;
+      }).join('');
+      const doublers = getDerived2v2Doublers(g.name);
+      const sitOuts  = getDerived2v2SitOut(g.name);
+      const doublerHtml = doublers.length
+        ? `<div class="playtwice-banner">plays twice: ${doublers.map(d=>`<span class="${teamCls(d.team)}-name">${d.name}</span>`).join(', ')}</div>`
+        : '';
+      const sitOutHtml = sitOuts.length
+        ? `<div class="playtwice-banner">sits out: ${sitOuts.map(s=>`<span class="${teamCls(s.team)}-name">${s.name}</span>`).join(', ')}</div>`
+        : '';
+      return `<div class="game-panel" id="gp-${gi}">
+        <div class="game-progress-bar"><div class="game-progress-fill" style="width:${pct}%"></div></div>
+        ${doublerHtml}${sitOutHtml}
+        <div class="matchup-list">${rows}</div>
+      </div>`;
+    } else {
+      const sched=SCHEDULE_1V1[g.name];
+      const rows=sched.matchups.map((m,mi)=>{
+        const key=g.name+'|'+mi;
+        const winner=getR(key);
+        const p1won=winner===m.p1, p2won=winner===m.p2;
+        const t1cls=teamCls(m.t1); const t2cls=teamCls(m.t2);
+        return `<div class="matchup-row${winner?' done':''}">
+          <button class="player-btn ${t1cls}${p1won?' winner':''}${p2won?' loser':''}"
+            onclick="toggleR('${key}','${m.p1}')">${m.p1}</button>
+          <div class="vs-label">VS</div>
+          <button class="player-btn ${t2cls}${p2won?' winner':''}${p1won?' loser':''}"
+            onclick="toggleR('${key}','${m.p2}')">${m.p2}</button>
+        </div>`;
+      }).join('');
+      const derived = getDerivedDoubler(g.name);
+      return `<div class="game-panel" id="gp-${gi}">
+        <div class="game-progress-bar"><div class="game-progress-fill" style="width:${pct}%"></div></div>
+        ${doublerBanner(derived.name, derived.team)}
+        <div class="matchup-list">${rows}</div>
+      </div>`;
+    }
+  }).join('');
+}
+
+let activeGameIdx = 0;
+
+function showGame(idx, btn){
+  activeGameIdx = idx;
+  document.querySelectorAll('.game-nav-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.game-panel').forEach(p=>p.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  document.getElementById('gp-'+idx).classList.add('active');
+}
+
+// ── RENDER MVP ────────────────────────────────────────────────────────────────
+function renderMVP(){
+  const players=TEAM_KEYS.flatMap(tk=>TEAMS[tk].players.map(p=>({name:p,team:tk,wins:playerWins(p)})));
+  players.sort((a,b)=>b.wins-a.wins);
+  const mx=players[0].wins;
+  document.getElementById('mvp-grid').innerHTML=players.map(p=>{
+    const isMVP=p.wins>0&&p.wins===mx;
+    const init=p.name.split(' ').map(x=>x[0]).join('').substring(0,2).toUpperCase();
     return `<div class="mvp-card">
-      <div>
-        <div class="mvp-avatar ${p.team}">${initials}</div>
-      </div>
+      <div class="mvp-avatar ${p.team}">${init}</div>
       <div style="flex:1;min-width:0;">
         <div class="mvp-name">${p.name}</div>
-        <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--cream2);opacity:0.5;letter-spacing:0.06em;text-transform:uppercase;">${TEAMS[p.team].short}</div>
-        ${isMVP ? '<div class="mvp-badge">&#9733; MVP</div>' : ''}
+        <div class="mvp-team-lbl">${TEAMS[p.team].short}</div>
+        ${isMVP?'<div class="mvp-badge">&#9733; MVP</div>':''}
       </div>
       <div style="text-align:right;flex-shrink:0;">
         <div class="mvp-wins">${p.wins}</div>
         <div class="mvp-wins-lbl">wins</div>
-        <div class="btn-row" style="margin-top:4px;">
-          <button class="score-btn" style="width:22px;height:22px;font-size:13px;" onclick="changePlayerWins('${p.name}',-1)">−</button>
-          <button class="score-btn" style="width:22px;height:22px;font-size:13px;" onclick="changePlayerWins('${p.name}',1)">+</button>
-        </div>
       </div>
     </div>`;
   }).join('');
 }
 
-function renderAll() {
+function renderAll(){
   renderTeamTotals();
-  renderGameBreakdown();
+  renderGameNav();
+  renderGamePanels();
   renderMVP();
+  // Restore active game selection after rerender
+  const navBtns = document.querySelectorAll('.game-nav-btn');
+  const panels = document.querySelectorAll('.game-panel');
+  navBtns.forEach(b=>b.classList.remove('active'));
+  panels.forEach(p=>p.classList.remove('active'));
+  if(navBtns[activeGameIdx]) navBtns[activeGameIdx].classList.add('active');
+  if(panels[activeGameIdx]) panels[activeGameIdx].classList.add('active');
 }
-
-function confirmReset() {
-  if (confirm('Reset ALL scores to zero? This cannot be undone.')) {
-    state = defaultState();
-    saveState();
+function confirmReset(){
+  const btn = document.getElementById('reset-btn');
+  if(btn.dataset.confirming === 'true'){
+    results={};
+    saveResults();
+    activeGameIdx=0;
     renderAll();
+    btn.textContent='Reset all scores';
+    btn.dataset.confirming='false';
+    btn.style.borderColor='';
+    btn.style.color='';
+  } else {
+    btn.dataset.confirming='true';
+    btn.textContent='Tap again to confirm reset';
+    btn.style.borderColor='#C0392B';
+    btn.style.color='#C0392B';
+    setTimeout(()=>{
+      btn.textContent='Reset all scores';
+      btn.dataset.confirming='false';
+      btn.style.borderColor='';
+      btn.style.color='';
+    }, 3000);
   }
 }
 
-// RULES
-const rulePills = document.getElementById('rule-pills');
-const ruleCards = document.getElementById('rule-cards');
-GAMES.forEach((g, i) => {
-  const pill = document.createElement('button');
-  pill.className = 'game-pill' + (i === 0 ? ' active' : '');
-  pill.textContent = g.name;
-  pill.onclick = () => {
-    document.querySelectorAll('#rule-pills .game-pill').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.rule-card').forEach(c => c.classList.remove('active'));
-    pill.classList.add('active');
-    document.getElementById('rc-' + i).classList.add('active');
+// ── TEAM EDITOR ───────────────────────────────────────────────────────────────
+const ALL_PLAYERS = ['Glenn','Chad I','Matt S','Craig B','Luke S','Dan O','Tim C','Tommy A','Brandon M','Jason R','JD','Mike F','Matt P','Dan D','Nico L'];
+const BENCH_KEY = 'beerlympics_bench_v1';
+
+let draftTeams = null;
+let draftBench = null;
+let selectedPlayer = null;
+let selectedFromTeam = null; // null = bench, else team key
+
+function loadDraft(){
+  try {
+    const s = localStorage.getItem(BENCH_KEY);
+    if(s){
+      const d = JSON.parse(s);
+      return { teams: d.teams, bench: d.bench };
+    }
+  } catch(e){}
+  // Default: everyone on bench
+  return {
+    teams: { pizza:[], punctual:[], sleepy:[] },
+    bench: [...ALL_PLAYERS]
+  };
+}
+function saveDraft(){
+  localStorage.setItem(BENCH_KEY, JSON.stringify({ teams: draftTeams, bench: draftBench }));
+}
+
+function initEditor(){
+  const saved = loadDraft();
+  draftTeams = saved.teams;
+  draftBench = saved.bench;
+  selectedPlayer = null; selectedFromTeam = null;
+  renderEditor();
+}
+
+function resetToBench(){
+  draftTeams = { pizza:[], punctual:[], sleepy:[] };
+  draftBench = [...ALL_PLAYERS];
+  selectedPlayer = null; selectedFromTeam = null;
+  saveDraft();
+  renderEditor();
+}
+
+function renderEditor(){
+  // ── BENCH ──
+  const benchEl = document.getElementById('bench-players');
+  benchEl.innerHTML = '';
+  if(draftBench.length === 0){
+    benchEl.innerHTML = `<span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--cream2);opacity:0.4;">Empty — all players assigned</span>`;
+  }
+  draftBench.forEach(player => {
+    const isSelected = selectedPlayer === player && selectedFromTeam === null;
+    const el = document.createElement('div');
+    el.className = `tap-player bench${isSelected ? ' selected' : ''}`;
+    el.textContent = player;
+    el.addEventListener('click', e => {
+      e.stopPropagation();
+      if(isSelected){ clearSelection(); return; }
+      selectedPlayer = player; selectedFromTeam = null;
+      showHint(`${player} selected — tap a team to assign`);
+      renderEditor();
+    });
+    benchEl.appendChild(el);
+  });
+
+  // ── TEAM COLUMNS ──
+  const grid = document.getElementById('team-editor-grid');
+  grid.innerHTML = '';
+  TEAM_KEYS.forEach(tk => {
+    const t = draftTeams[tk];
+    const isDropTarget = selectedPlayer !== null && selectedFromTeam !== tk;
+    const col = document.createElement('div');
+    col.className = `team-col${isDropTarget ? ' drop-target' : ''}`;
+    col.innerHTML = `<div class="team-col-header ${tk}">${TEAMS[tk].short}<span class="team-count">${t.length}/5</span></div>
+      <div class="team-col-body" id="col-body-${tk}"></div>`;
+
+    // Tap column to assign selected player here
+    col.addEventListener('click', e => {
+      if(!selectedPlayer) return;
+      if(selectedFromTeam === tk){ clearSelection(); return; }
+      // Remove from source
+      if(selectedFromTeam === null){
+        draftBench.splice(draftBench.indexOf(selectedPlayer), 1);
+      } else {
+        draftTeams[selectedFromTeam].splice(draftTeams[selectedFromTeam].indexOf(selectedPlayer), 1);
+      }
+      // Add to target team
+      draftTeams[tk].push(selectedPlayer);
+      clearSelection();
+      saveDraft();
+      renderEditor();
+      validateEditor();
+    });
+
+    grid.appendChild(col);
+    const body = col.querySelector('.team-col-body');
+
+    t.forEach(player => {
+      const isSelected = selectedPlayer === player && selectedFromTeam === tk;
+      const el = document.createElement('div');
+      el.className = `tap-player ${tk}${isSelected ? ' selected' : ''}`;
+      el.textContent = player;
+      el.addEventListener('click', e => {
+        e.stopPropagation();
+        if(isSelected){
+          clearSelection(); return;
+        }
+        // Tap player on a team — select to move, or send back to bench on second tap
+        if(selectedPlayer === player && selectedFromTeam !== tk){
+          clearSelection(); return;
+        }
+        selectedPlayer = player; selectedFromTeam = tk;
+        showHint(`${player} selected — tap another team or the bench to move`);
+        renderEditor();
+      });
+      body.appendChild(el);
+    });
+  });
+
+  // Make bench area tappable to return a team player to bench
+  document.getElementById('bench-section').onclick = e => {
+    if(!selectedPlayer || selectedFromTeam === null) return;
+    draftTeams[selectedFromTeam].splice(draftTeams[selectedFromTeam].indexOf(selectedPlayer), 1);
+    draftBench.push(selectedPlayer);
+    clearSelection();
+    saveDraft();
+    renderEditor();
+    validateEditor();
+  };
+
+  validateEditor();
+}
+
+function clearSelection(){
+  selectedPlayer = null; selectedFromTeam = null;
+  const hint = document.getElementById('editor-hint');
+  hint.style.display = 'none'; hint.textContent = '';
+}
+function showHint(msg){
+  const hint = document.getElementById('editor-hint');
+  hint.textContent = msg; hint.style.display = 'block';
+}
+function validateEditor(){
+  const counts = TEAM_KEYS.map(tk => draftTeams[tk].length);
+  const benchCount = draftBench.length;
+  const ok = counts.every(c => c === 5) && benchCount === 0;
+  const warn = document.getElementById('editor-warning');
+  const btn = document.getElementById('confirm-teams-btn');
+  const status = document.getElementById('editor-status');
+  if(ok){
+    warn.style.display='none'; btn.disabled=false;
+    status.textContent='All teams have 5 players ✓';
+  } else {
+    warn.style.display='block'; btn.disabled=true; status.textContent='';
+    const msgs = TEAM_KEYS.map((tk,i)=>`${TEAMS[tk].short}: ${counts[i]}`).join(' · ');
+    warn.textContent = benchCount > 0
+      ? `${benchCount} player${benchCount>1?'s':''} still on the bench. ${msgs}`
+      : `Each team needs exactly 5. ${msgs}`;
+  }
+}
+function confirmTeams(){
+  if(!TEAM_KEYS.map(tk=>draftTeams[tk].length).every(c=>c===5)) return;
+  if(draftBench.length > 0) return;
+  const btn = document.getElementById('confirm-teams-btn');
+  if(btn.dataset.confirming==='true'){
+    TEAM_KEYS.forEach(tk=>{ TEAMS[tk].players = [...draftTeams[tk]]; });
+    saveTeams(TEAMS);
+    localStorage.removeItem(BENCH_KEY);
+    results={}; saveResults(); renderAll();
+    btn.textContent='Confirm teams & reset scores';
+    btn.dataset.confirming='false';
+    btn.style.background='';
+    showSection('scoring', document.querySelectorAll('.nav-btn')[1]);
+  } else {
+    btn.dataset.confirming='true';
+    btn.textContent='Tap again to confirm';
+    btn.style.background='#C0392B';
+    setTimeout(()=>{
+      if(btn.dataset.confirming==='true'){
+        btn.textContent='Confirm teams & reset scores';
+        btn.dataset.confirming='false';
+        btn.style.background='';
+      }
+    }, 3000);
+  }
+}
+
+// ── RULES ─────────────────────────────────────────────────────────────────────
+const rulePills=document.getElementById('rule-pills');
+const ruleCards=document.getElementById('rule-cards');
+GAMES.forEach((g,i)=>{
+  const pill=document.createElement('button');
+  pill.className='game-pill'+(i===0?' active':'');pill.textContent=g.name;
+  pill.onclick=()=>{
+    document.querySelectorAll('#rule-pills .game-pill').forEach(p=>p.classList.remove('active'));
+    document.querySelectorAll('.rule-card').forEach(c=>c.classList.remove('active'));
+    pill.classList.add('active');document.getElementById('rc-'+i).classList.add('active');
   };
   rulePills.appendChild(pill);
-  const card = document.createElement('div');
-  card.className = 'rule-card' + (i === 0 ? ' active' : '');
-  card.id = 'rc-' + i;
-  const sugTag = g.suggested ? `<span class="suggested-tag">suggested format</span>` : '';
-  card.innerHTML = `
-    <div class="rule-card-header">
-      <div class="rule-card-title">${g.name}${sugTag}</div>
-      <div class="rule-format">${g.format}</div>
-    </div>
-    <div class="win-condition"><strong>Win condition</strong>${g.win}</div>
-    <div class="rules-label">Rules</div>
-    ${g.rules.map((r,ri) => `<div class="rule-item"><div class="rule-num">${String(ri+1).padStart(2,'0')}</div><div>${r}</div></div>`).join('')}`;
+  const card=document.createElement('div');
+  card.className='rule-card'+(i===0?' active':'');card.id='rc-'+i;
+  const sug=g.suggested?`<span class="suggested-tag">suggested format</span>`:'';
+  card.innerHTML=`<div class="rule-card-header">
+    <div class="rule-card-title">${g.name}${sug}</div>
+    <div class="rule-format">${g.format}</div>
+  </div>
+  <div class="win-condition"><strong>Win condition</strong>${g.win}</div>
+  <div class="rules-label">Rules</div>
+  ${g.rules.map((r,ri)=>`<div class="rule-item"><div class="rule-num">${String(ri+1).padStart(2,'0')}</div><div>${r}</div></div>`).join('')}`;
   ruleCards.appendChild(card);
 });
 
-// MATRIX
-const matrixPills = document.getElementById('matrix-pills');
-const matrixBody = document.getElementById('matrix-body');
-const teamPlayers = {
-  pizza:    TEAMS.pizza.players,
-  punctual: TEAMS.punctual.players,
-  sleepy:   TEAMS.sleepy.players
-};
-
-function tagHTML(player, teamCls) {
-  return `<span class="player-tag tag-${teamCls}">${player}</span>`;
+// ── NAV ───────────────────────────────────────────────────────────────────────
+function showSection(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('section-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
+  if(id==='teams')initEditor();
+}
+function showScorePanel(id,btn){
+  document.querySelectorAll('.score-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.score-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('score-panel-'+id).classList.add('active');
+  if(btn)btn.classList.add('active');
 }
 
-function buildMatrix(gameIndex) {
-  const offset = gameIndex % 5;
-  return Array.from({length:5}, (_, r) => ({
-    round: r + 1,
-    PizzaPunctual: [teamPlayers.pizza[r], teamPlayers.punctual[(r + offset) % 5]],
-    PizzaSleepy:   [teamPlayers.pizza[(r + 1) % 5], teamPlayers.sleepy[(r + offset * 2) % 5]],
-    PunctualSleepy:[teamPlayers.punctual[(r + offset + 1) % 5], teamPlayers.sleepy[(r + offset * 2 + 1) % 5]]
-  }));
-}
-
-function renderMatrix(gameIndex) {
-  const rows = buildMatrix(gameIndex);
-  matrixBody.innerHTML = rows.map(m => `<tr>
-    <td><span class="rd-label">Rd ${m.round}</span></td>
-    <td>${tagHTML(m.PizzaPunctual[0],'pizza')} <span class="vs-sep">vs</span> ${tagHTML(m.PizzaPunctual[1],'punctual')}</td>
-    <td>${tagHTML(m.PizzaSleepy[0],'pizza')} <span class="vs-sep">vs</span> ${tagHTML(m.PizzaSleepy[1],'sleepy')}</td>
-    <td>${tagHTML(m.PunctualSleepy[0],'punctual')} <span class="vs-sep">vs</span> ${tagHTML(m.PunctualSleepy[1],'sleepy')}</td>
-  </tr>`).join('');
-}
-
-GAMES.forEach((g, i) => {
-  const pill = document.createElement('button');
-  pill.className = 'game-pill' + (i === 0 ? ' active' : '');
-  pill.textContent = g.name;
-  pill.onclick = () => {
-    document.querySelectorAll('#matrix-pills .game-pill').forEach(p => p.classList.remove('active'));
-    pill.classList.add('active');
-    renderMatrix(i);
-  };
-  matrixPills.appendChild(pill);
-});
-renderMatrix(0);
-
-// NAV
-function showSection(id, btn) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('section-' + id).classList.add('active');
-  if (btn) btn.classList.add('active');
-}
-
-function showScorePanel(id, btn) {
-  document.querySelectorAll('.score-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.score-tab').forEach(b => b.classList.remove('active'));
-  document.getElementById('score-panel-' + id).classList.add('active');
-  if (btn) btn.classList.add('active');
-}
-
-// INIT
 renderAll();
 </script>
 </body>
